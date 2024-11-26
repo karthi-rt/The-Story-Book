@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Story Book Library</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="book_library">Book Library</string>
+    <string name="create">Create</string>
+    <string name="detail">Details</string>
+
+<!--  Sample Title & Description  -->
+
+    <string name="story_title">Lorem ipsum dolor</string>
+    <string name="story_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </string>
+    <string name="story_summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident,
+                            sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+
+
+<!--  Content Description  -->
+    <string name="fab_content_desc">Floating Action Button</string>
+    <string name="add_story">Add story</string>
+    <string name="edit_story">Edit story</string>
+    <string name="favourite_story">Favourite story</string>
+    <string name="delete_story">Delete story</string>
+    <string name="back">Go Back</string>
+    <string name="summary">Summary</string>
+    <string name="author">Author</string>
+    <string name="tags">Tags</string>
+    <string name="category">Category</string>
+</resources>
