@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -52,5 +53,19 @@ dependencies {
 
     // Room Database
     implementation (libs.androidx.room.runtime)
-    annotationProcessor (libs.androidx.room.compiler)
+    // See Add the KSP plugin to your project
+    ksp(libs.androidx.room.compiler)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
+    // If this project only uses Java source, use the Java annotationProcessor
+    // No additional plugins are necessary
+    // annotationProcessor (libs.androidx.room.compiler)
+
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
 }
