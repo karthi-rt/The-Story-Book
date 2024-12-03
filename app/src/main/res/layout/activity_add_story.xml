@@ -6,11 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddStoryActivity">
+    tools:context=".activity.add.AddStoryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -20,8 +22,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:contentDescription="@string/back"
-            android:padding="10dp"
+            android:contentDescription="@string/back_button_desc"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="1dp"
             android:src="@drawable/ic_arrow_left" />
 
         <TextView
@@ -38,8 +43,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:contentDescription="@string/add_story"
-            android:padding="10dp"
+            android:contentDescription="@string/add_button_desc"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingEnd="1dp"
+            android:paddingStart="10dp"
             android:src="@drawable/ic_plus" />
 
         <ImageView
@@ -47,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:contentDescription="@string/add_story"
+            android:contentDescription="@string/add_button_desc"
             android:padding="10dp"
             android:src="@drawable/ic_check"
             android:visibility="gone"/>
@@ -57,16 +65,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/title"
-            android:layout_marginBottom="6dp">
+            android:layout_marginBottom="@dimen/edittext_bottom">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_Title"
@@ -79,10 +88,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/summary"
-            android:layout_marginBottom="6dp">
+            android:layout_marginBottom="@dimen/edittext_bottom">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_Summary"
@@ -94,10 +104,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/category"
-            android:layout_marginBottom="6dp">
+            android:layout_marginBottom="@dimen/edittext_bottom">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_Category"
@@ -110,10 +121,27 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/tags"
-            android:layout_marginBottom="6dp">
+            android:hint="@string/author"
+            android:layout_marginBottom="@dimen/edittext_bottom">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_Author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionDone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tags">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_Tags"
@@ -125,21 +153,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/author"
-            android:layout_marginBottom="6dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_Author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:inputType="text"
-                android:imeOptions="actionDone" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 

@@ -13,16 +13,16 @@
         android:theme="@style/Theme.StoryBookLibrary"
         tools:targetApi="31">
         <activity
-            android:name=".StoryDetailActivity"
+            android:name=".activity.StoryDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateStoryActivity"
+            android:name=".activity.update.UpdateStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".AddStoryActivity"
+            android:name=".activity.add.AddStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

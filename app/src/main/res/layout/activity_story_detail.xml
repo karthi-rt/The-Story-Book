@@ -7,21 +7,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StoryDetailActivity">
+    tools:context=".activity.StoryDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp">
 
         <ImageView
             android:id="@+id/iv_Back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:contentDescription="@string/back"
+            android:contentDescription="@string/back_button_desc"
             android:padding="10dp"
             android:src="@drawable/ic_arrow_left" />
 
@@ -39,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:contentDescription="@string/edit_story"
+            android:contentDescription="@string/edit_button_desc"
             android:padding="10dp"
             android:src="@drawable/ic_edit" />
 
@@ -48,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:contentDescription="@string/favourite_story"
+            android:contentDescription="@string/favourite_button_desc"
             android:padding="10dp"
             android:src="@drawable/ic_star" />
 
@@ -57,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:contentDescription="@string/delete_story"
+            android:contentDescription="@string/delete_button_desc"
             android:padding="10dp"
             android:src="@drawable/ic_trash" />
 
@@ -71,46 +73,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/ic_launcher_background"
-                android:scaleType="centerCrop"/>
+                app:cardElevation="2dp"
+                app:cardCornerRadius="6dp"
+                app:cardMaxElevation="4dp"
+                app:cardPreventCornerOverlap="true">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_launcher_background"
+                    android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_Category"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Classic"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="12dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_Title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="A Little Help from God"
                 android:textSize="20sp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="8dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_Summary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/story_summary"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
+                android:id="@+id/tv_Author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Vedantu"
                 android:textSize="18sp"
                 android:layout_marginTop="24dp"/>
 
             <TextView
+                android:id="@+id/tv_Tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Adventure"
                 android:background="@drawable/rounded_rectangle"
                 android:textSize="16sp"
                 android:paddingStart="6dp"

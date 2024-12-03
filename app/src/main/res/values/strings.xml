@@ -4,6 +4,7 @@
     <string name="description">Description</string>
     <string name="book_library">Book Library</string>
     <string name="create">Create</string>
+    <string name="update">Update</string>
     <string name="detail">Details</string>
 
 <!--  Sample Title & Description  -->
@@ -20,11 +21,12 @@
 
 <!--  Content Description  -->
     <string name="fab_content_desc">Floating Action Button</string>
-    <string name="add_story">Add story</string>
-    <string name="edit_story">Edit story</string>
-    <string name="favourite_story">Favourite story</string>
-    <string name="delete_story">Delete story</string>
-    <string name="back">Go Back</string>
+    <string name="add_button_desc">Add Button</string>
+    <string name="edit_button_desc">Edit Button</string>
+    <string name="update_button_desc">Update Button</string>
+    <string name="favourite_button_desc">Favourite Button</string>
+    <string name="delete_button_desc">Delete Button</string>
+    <string name="back_button_desc">Back Button</string>
     <string name="summary">Summary</string>
     <string name="author">Author</string>
     <string name="tags">Tags</string>

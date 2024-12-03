@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/ll_bookItem"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/iv_BookImage"
+    <androidx.cardview.widget.CardView
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:src="@drawable/ic_launcher_background"/>
+        app:cardElevation="2dp"
+        app:cardCornerRadius="6dp"
+        app:cardMaxElevation="4dp"
+        app:cardPreventCornerOverlap="true">
+
+        <ImageView
+            android:id="@+id/iv_BookImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"/>
+
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,9 +40,11 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/tv_BookDescription"
+            android:id="@+id/tv_BookSummary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end"
             android:text="@string/story_description"
             android:textSize="16sp"/>
 

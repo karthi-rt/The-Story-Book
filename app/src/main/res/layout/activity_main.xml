@@ -7,11 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".activity.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -34,6 +34,7 @@
                 android:id="@+id/iv_Favourite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/favourite_button_desc"
                 android:src="@drawable/ic_star"
                 android:padding="8dp"
                 android:layout_gravity="end"/>
@@ -47,7 +48,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             />
 
     </LinearLayout>
@@ -59,6 +60,8 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:contentDescription="@string/fab_content_desc"
+        android:clickable="true"
+        android:focusable="true"
         app:srcCompat="@drawable/ic_plus"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
