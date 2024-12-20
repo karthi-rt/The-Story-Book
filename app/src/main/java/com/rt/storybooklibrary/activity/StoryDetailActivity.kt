@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.rt.storybooklibrary.R
 import com.rt.storybooklibrary.activity.update.UpdateStoryActivity
 import com.rt.storybooklibrary.databinding.ActivityStoryDetailBinding
+import com.rt.storybooklibrary.model.Book
 import com.rt.storybooklibrary.viewmodel.BookViewModel
 
 class StoryDetailActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class StoryDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStoryDetailBinding
     private lateinit var mBookViewModel: BookViewModel
     private var bookId: Int = -1
+    private var currentBook: Book? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,26 +53,47 @@ class StoryDetailActivity : AppCompatActivity() {
         binding.ivBack.setOnClickListener { finish() }
 
         binding.ivDelete.setOnClickListener { deleteStory() }
+
+        binding.ivFavourite.setOnClickListener {
+            currentBook?.let { book ->
+                val newFavoriteStatus = !book.favorite
+                mBookViewModel.updateFavoriteStatus(book.id, newFavoriteStatus)
+                book.favorite = newFavoriteStatus // Update UI immediately
+                updateFavoriteIcon(newFavoriteStatus)
+            } ?: run {
+                Snackbar.make(binding.root, "Unable to mark as favorite", Snackbar.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+    private fun updateFavoriteIcon(isFavorite: Boolean) {
+        binding.ivFavourite.setImageResource(
+            if (isFavorite) R.drawable.ic_star_filled else R.drawable.ic_star_outline
+        )
     }
 
     private fun observeStoryDetails() {
         mBookViewModel.getBookById(bookId).observe(this) { book ->
             if (book != null) {
+                currentBook = book // Set the currentBook
                 binding.tvTitle.text = book.title
                 binding.tvSummary.text = book.summary
                 binding.tvCategory.text = book.category
                 binding.tvAuthor.text = book.author
                 binding.tvTags.text = book.tags
+                updateFavoriteIcon(book.favorite) // Update the icon based on the current favorite status
             } else {
                 // Handle the case where the book is not found
-                binding.tvTitle.text = "N/A"
-                binding.tvSummary.text = "N/A"
-                binding.tvCategory.text = "N/A"
-                binding.tvAuthor.text = "N/A"
-                binding.tvTags.text = "N/A"
+                binding.tvTitle.text = "Story not found"
+                binding.tvSummary.text = ""
+                binding.tvCategory.text = ""
+                binding.tvAuthor.text = ""
+                binding.tvTags.text = ""
             }
         }
     }
+
 
     private fun navigateToUpdateStoryActivity() {
         val intent = Intent(this, UpdateStoryActivity::class.java).apply {

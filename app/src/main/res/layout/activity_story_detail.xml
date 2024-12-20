@@ -52,7 +52,7 @@
             android:layout_gravity="end"
             android:contentDescription="@string/favourite_button_desc"
             android:padding="10dp"
-            android:src="@drawable/ic_star" />
+            android:src="@drawable/ic_star_outline" />
 
         <ImageView
             android:id="@+id/iv_Delete"

@@ -27,4 +27,12 @@ class BookRepository(private val bookDao: BookDao) {
     suspend fun deleteAllStory() {
         bookDao.deleteAllStory()
     }
+
+    suspend fun updateFavoriteStatus(bookId: Int, isFavorite: Boolean) {
+        bookDao.updateFavoriteStatus(bookId, isFavorite)
+    }
+
+    fun getFavoriteBooks(): LiveData<List<Book>> {
+        return bookDao.getFavoriteBooks()
+    }
 }

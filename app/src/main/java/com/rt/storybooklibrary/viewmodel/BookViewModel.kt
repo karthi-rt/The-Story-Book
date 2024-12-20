@@ -43,11 +43,21 @@ class BookViewModel (application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun deleteAllStory() {
+    fun updateFavoriteStatus(bookId: Int, isFavorite: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteAllStory()
+            repository.updateFavoriteStatus(bookId, isFavorite)
         }
     }
+
+    fun getFavoriteBooks(): LiveData<List<Book>> {
+        return repository.getFavoriteBooks()
+    }
+
+//    fun deleteAllStory() {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.deleteAllStory()
+//        }
+//    }
 
 }
 
