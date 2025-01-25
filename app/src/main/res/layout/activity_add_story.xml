@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:inputType="text"
-                android:imeOptions="actionDone"/>
+                android:nextFocusDown="@id/et_Summary" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +99,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
-                android:maxLines="16"/>
+                android:maxLines="16"
+                android:nextFocusDown="@id/et_Category"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:inputType="text"
-                android:imeOptions="actionDone"/>
+                android:nextFocusDown="@id/et_Author"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:inputType="text"
-                android:imeOptions="actionDone" />
+                android:nextFocusDown="@id/et_Tags" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -6,8 +6,11 @@
     <string name="create">Create</string>
     <string name="update">Update</string>
     <string name="detail">Details</string>
+    <string name="successfully_added">Successfully added!</string>
+    <string name="please_fill_out_all_fields">Please fill out all fields</string>
 
-<!--  Sample Title & Description  -->
+
+    <!--  Sample Title & Description  -->
 
     <string name="story_title">Lorem ipsum dolor</string>
     <string name="story_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -26,7 +29,7 @@
     <string name="update_button_desc">Update Button</string>
     <string name="favourite_button_desc">Favourite Button</string>
     <string name="delete_button_desc">Delete Button</string>
-    <string name="back_button_desc">Back Button</string>
+    <string name="back_button_desc">Navigate back to the main menu</string>
     <string name="summary">Summary</string>
     <string name="author">Author</string>
     <string name="tags">Tags</string>

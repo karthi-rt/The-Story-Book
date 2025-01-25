@@ -8,11 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.rt.storybooklibrary.R
 import com.rt.storybooklibrary.databinding.ActivityAddStoryBinding
 import com.rt.storybooklibrary.model.Book
 import com.rt.storybooklibrary.viewmodel.BookViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AddStoryActivity : AppCompatActivity() {
 
@@ -50,26 +54,33 @@ class AddStoryActivity : AppCompatActivity() {
 
     private fun insertDataToDatabase() {
 
-        binding.progressCyclic.visibility = View.VISIBLE
+        lifecycleScope.launch {
+            binding.progressCyclic.visibility = View.VISIBLE
 
-        val title = binding.etTitle.text.toString().trim()
-        val summary = binding.etSummary.text.toString().trim()
-        val category = binding.etCategory.text.toString().trim()
-        val tags = binding.etTags.text.toString().trim()
-        val author = binding.etAuthor.text.toString().trim()
+            val title = binding.etTitle.text.toString().trim()
+            val summary = binding.etSummary.text.toString().trim()
+            val category = binding.etCategory.text.toString().trim()
+            val tags = binding.etTags.text.toString().trim()
+            val author = binding.etAuthor.text.toString().trim()
 
-        if (inputCheck(title, summary, category, author, tags)) {
-            // Create User Object
-            val book = Book(0, title, summary, category, author, tags)
-            // Add Data to Database
-            mBookViewModel.addBook(book)
-            binding.progressCyclic.visibility = View.GONE
-            Snackbar.make(binding.root, "Successfully added!", Snackbar.LENGTH_LONG).show()
-            clearForm()
-            finish()
-        } else {
-            binding.progressCyclic.visibility = View.GONE
-            Snackbar.make(binding.root, "Please fill out all fields.", Snackbar.LENGTH_LONG).show()
+            if (inputCheck(title, summary, category, author, tags)) {
+                // Create User Object
+                val book = Book(0, title, summary, category, author, tags)
+                // Add Data to Database
+                withContext(Dispatchers.IO) {
+                    mBookViewModel.addBook(book)
+                }
+                withContext(Dispatchers.Main) {
+                    binding.progressCyclic.visibility = View.GONE
+                    Snackbar.make(binding.root, getString(R.string.successfully_added), Snackbar.LENGTH_LONG).show()
+                    clearForm()
+                    finish()
+                }
+            } else {
+                binding.progressCyclic.visibility = View.GONE
+                Snackbar.make(binding.root, getString(R.string.please_fill_out_all_fields), Snackbar.LENGTH_LONG).show()
+            }
+
         }
     }
 
