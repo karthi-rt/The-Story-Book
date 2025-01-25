@@ -1,6 +1,7 @@
 package com.rt.storybooklibrary.activity.add
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +49,9 @@ class AddStoryActivity : AppCompatActivity() {
     }
 
     private fun insertDataToDatabase() {
+
+        binding.progressCyclic.visibility = View.VISIBLE
+
         val title = binding.etTitle.text.toString().trim()
         val summary = binding.etSummary.text.toString().trim()
         val category = binding.etCategory.text.toString().trim()
@@ -59,10 +63,12 @@ class AddStoryActivity : AppCompatActivity() {
             val book = Book(0, title, summary, category, author, tags)
             // Add Data to Database
             mBookViewModel.addBook(book)
+            binding.progressCyclic.visibility = View.GONE
             Snackbar.make(binding.root, "Successfully added!", Snackbar.LENGTH_LONG).show()
             clearForm()
             finish()
         } else {
+            binding.progressCyclic.visibility = View.GONE
             Snackbar.make(binding.root, "Please fill out all fields.", Snackbar.LENGTH_LONG).show()
         }
     }

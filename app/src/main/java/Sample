@@ -1,68 +1,7 @@
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var mBookViewModel: BookViewModel
-    private lateinit var adapter: BookAdapter
-    private var isFavoriteFilterActive: Boolean = false
-
-    // Lists to hold all books and favorite books
-    private var allBooksList: List<Book> = emptyList()
-    private var favoriteBooksList: List<Book> = emptyList()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // ... your existing onCreate code ...
-
-        // Observe all books once
-        mBookViewModel.readAllStory.observe(this) { allBooks ->
-            allBooksList = allBooks
-            updateRecyclerView()
-        }
-
-        // Observe favorite books once
-        mBookViewModel.getFavoriteBooks().observe(this) { favoriteBooks ->
-            favoriteBooksList = favoriteBooks
-            if (isFavoriteFilterActive) {
-                updateRecyclerView()
-            }
-        }
-
-        // ... rest of your onCreate code ...
-    }
-
-    // ... rest of your MainActivity code ...
-}
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var mBookViewModel: BookViewModel
-    private lateinit var adapter: BookAdapter
-    private var isFavoriteFilterActive: Boolean = false
-
-    // Lists to hold all books and favorite books
-    private var allBooksList: List<Book> = emptyList()
-    private var favoriteBooksList: List<Book> = emptyList()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // ... your existing onCreate code ...
-
-        // Observe all books once
-        mBookViewModel.readAllStory.observe(this) { allBooks ->
-            allBooksList = allBooks
-            updateRecyclerView()
-        }
-
-        // Observe favorite books once
-        mBookViewModel.getFavoriteBooks().observe(this) { favoriteBooks ->
-            favoriteBooksList = favoriteBooks
-            if (isFavoriteFilterActive) {
-                updateRecyclerView()
-            }
-        }
-
-        // ... rest of your onCreate code ...
-    }
-
-    // ... rest of your MainActivity code ...
-}
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/fab_Add"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:src="@drawable/ic_plus"
+    android:contentDescription="@string/add_button_desc"/>
