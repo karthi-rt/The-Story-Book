@@ -32,7 +32,8 @@ interface BookDao {
     @Query("UPDATE books SET favorite = :isFavorite WHERE id = :bookId")
     suspend fun updateFavoriteStatus(bookId: Int, isFavorite: Boolean)
 
-    @Query("SELECT * FROM books WHERE favorite = 1")
+    @Query("SELECT * FROM books WHERE favorite = 1 ORDER BY id DESC")
     fun getFavoriteBooks(): LiveData<List<Book>>
+
 
 }

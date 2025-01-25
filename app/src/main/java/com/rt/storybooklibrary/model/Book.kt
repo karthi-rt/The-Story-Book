@@ -12,6 +12,6 @@ data class Book(
     @ColumnInfo(name = "category") val category: String?,
     @ColumnInfo(name = "author") val author: String?,
     @ColumnInfo(name = "tags") val tags: String?,
-    var favorite: Boolean = false
+    @ColumnInfo(name = "favorite") var favorite: Boolean = false
 
 )

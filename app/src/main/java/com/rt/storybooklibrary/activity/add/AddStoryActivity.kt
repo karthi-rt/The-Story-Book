@@ -1,18 +1,17 @@
 package com.rt.storybooklibrary.activity.add
 
 import android.os.Bundle
-import android.text.TextUtils
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.rt.storybooklibrary.R
+import com.rt.storybooklibrary.databinding.ActivityAddStoryBinding
 import com.rt.storybooklibrary.model.Book
 import com.rt.storybooklibrary.viewmodel.BookViewModel
-import com.rt.storybooklibrary.databinding.ActivityAddStoryBinding
 
 class AddStoryActivity : AppCompatActivity() {
 
@@ -32,7 +31,18 @@ class AddStoryActivity : AppCompatActivity() {
 
         mBookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
 
-        binding.ivBack.setOnClickListener { finish() }
+        binding.ivBack.setOnClickListener {
+            if (isFormNotEmpty()) {
+                AlertDialog.Builder(this)
+                    .setTitle("Discard changes?")
+                    .setMessage("You have unsaved changes. Are you sure you want to exit?")
+                    .setPositiveButton("Yes") { _, _ -> finish() }
+                    .setNegativeButton("No", null)
+                    .show()
+            } else {
+                finish()
+            }
+        }
 
         binding.ivAdd.setOnClickListener { insertDataToDatabase() }
     }
@@ -59,6 +69,26 @@ class AddStoryActivity : AppCompatActivity() {
 
     private fun inputCheck(title: String, summary: String, category: String, author: String, tags: String): Boolean {
         return title.isNotEmpty() && summary.isNotEmpty() && category.isNotEmpty() && author.isNotEmpty() && tags.isNotEmpty()
+        /*
+        var isValid = true
+
+        if (title.isEmpty()) {
+            binding.etTitle.error = "Title cannot be empty"
+            isValid = false
+        }
+        if (summary.isEmpty()) {
+            binding.etSummary.error = "Summary cannot be empty"
+            isValid = false
+        }
+        // Repeat for other fields...
+        return isValid
+        ----------------------------------------------
+        binding.etTitle.addTextChangedListener {
+            binding.etTitle.error = null
+        }
+        // Repeat for other fields...
+
+         */
     }
 
     private fun clearForm() {
@@ -67,6 +97,28 @@ class AddStoryActivity : AppCompatActivity() {
         binding.etCategory.text?.clear()
         binding.etTags.text?.clear()
         binding.etAuthor.text?.clear()
+    }
+
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        if (isFormNotEmpty()) {
+            AlertDialog.Builder(this)
+                .setTitle("Discard changes?")
+                .setMessage("You have unsaved changes. Are you sure you want to exit?")
+                .setPositiveButton("Yes") { _, _ -> super.onBackPressed() }
+                .setNegativeButton("No", null)
+                .show()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    private fun isFormNotEmpty(): Boolean {
+        return binding.etTitle.text?.isNotEmpty() ?: false ||
+                binding.etSummary.text?.isNotEmpty() ?: false ||
+                binding.etCategory.text?.isNotEmpty() ?: false ||
+                binding.etTags.text?.isNotEmpty() ?: false ||
+                binding.etAuthor.text?.isNotEmpty() ?: false
     }
 
 }
