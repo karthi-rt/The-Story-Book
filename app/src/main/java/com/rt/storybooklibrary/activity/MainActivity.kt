@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (currentList.isEmpty()) {
-            val emptyMessage = if (isFavoriteFilterActive) "Add your favourite story" else "Add your story"
+            val emptyMessage = if (isFavoriteFilterActive) "Add a favorite story to your collection!" else "Begin your storytelling journey by adding your story to the library!"
             binding.tvStories.text = emptyMessage
             binding.tvStories.visibility = View.VISIBLE
             binding.recyclerView.visibility = View.GONE

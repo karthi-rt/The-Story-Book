@@ -69,7 +69,7 @@ class UpdateStoryActivity : AppCompatActivity() {
 
         if(inputCheck(updatedTitle, updatedSummary, updatedCategory, updatedAuthor, updatedTags)) {
             // Create Book Object
-            val updatedBook = Book(updatedId, updatedTitle, updatedSummary, updatedCategory, updatedTags, updatedAuthor)
+            val updatedBook = Book(updatedId, updatedTitle, updatedSummary, updatedCategory, updatedAuthor, updatedTags)
             // Update Current Story
             mBookViewModel.updateBook(updatedBook)
             Toast.makeText(this, "Updated Successfully!", Toast.LENGTH_SHORT).show()
@@ -78,6 +78,7 @@ class UpdateStoryActivity : AppCompatActivity() {
             val intent = Intent(this, StoryDetailActivity::class.java)
             intent.putExtra("storyId", updatedBook.id)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)
             finish()
         } else {
             Toast.makeText(this, "Please fill out all fields.", Toast.LENGTH_SHORT).show()

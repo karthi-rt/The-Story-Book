@@ -85,10 +85,13 @@
                 app:cardPreventCornerOverlap="true">
 
                 <ImageView
+                    android:id="@+id/iv_CoverImage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_launcher_background"
-                    android:scaleType="centerCrop"/>
+                    android:layout_height="240dp"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/cover_image_desc"
+                    android:src="@drawable/ic_launcher_background" />
+
 
             </androidx.cardview.widget.CardView>
 
@@ -96,39 +99,61 @@
                 android:id="@+id/tv_Category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="14dp"
+                android:textStyle="italic"
+                android:text="Category: Mystery" />
 
             <TextView
                 android:id="@+id/tv_Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginTop="8dp"/>
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:text="Story Title" />
 
             <TextView
                 android:id="@+id/tv_Summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:layout_marginTop="10dp"/>
+                android:lineSpacingExtra="4dp"
+                android:textAlignment="viewStart"
+                android:layout_marginTop="12dp"
+                android:text="Once upon a time..."/>
+
 
             <TextView
                 android:id="@+id/tv_Author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="24dp"
+                android:textStyle="italic"
+                android:text="Author: Jane Doe"
+                />
 
-            <TextView
-                android:id="@+id/tv_Tags"
-                android:layout_width="wrap_content"
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_Tags"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/rounded_rectangle"-->
+<!--                android:textSize="16sp"-->
+<!--                android:paddingStart="6dp"-->
+<!--                android:paddingEnd="6dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginBottom="50dp"/>-->
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup_Tags"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_rectangle"
-                android:textSize="16sp"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="50dp"/>
+                app:singleLine="true"
+                android:layout_marginBottom="50dp">
+                <!-- Chips will be added dynamically -->
+            </com.google.android.material.chip.ChipGroup>
 
         </LinearLayout>
 

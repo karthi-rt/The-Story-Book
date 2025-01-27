@@ -30,6 +30,7 @@
     <string name="favourite_button_desc">Favourite Button</string>
     <string name="delete_button_desc">Delete Button</string>
     <string name="back_button_desc">Navigate back to the main menu</string>
+    <string name="cover_image_desc">Cover Image</string>
     <string name="summary">Summary</string>
     <string name="author">Author</string>
     <string name="tags">Tags</string>

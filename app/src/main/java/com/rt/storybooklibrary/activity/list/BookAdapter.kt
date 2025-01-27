@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rt.storybooklibrary.R
 import com.rt.storybooklibrary.model.Book
 import com.rt.storybooklibrary.activity.StoryDetailActivity
 import com.rt.storybooklibrary.databinding.CustomBookListBinding
+import com.rt.storybooklibrary.util.BookDiffCallback
 
 
 class BookAdapter: RecyclerView.Adapter<BookAdapter.MyViewHolder>() {
@@ -49,9 +51,16 @@ class BookAdapter: RecyclerView.Adapter<BookAdapter.MyViewHolder>() {
         }
     }
 
+//    @SuppressLint("NotifyDataSetChanged")
+//    fun setData(book: List<Book>) {
+//        this.bookList = book
+//        notifyDataSetChanged()
+//    }
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(book: List<Book>) {
-        this.bookList = book
-        notifyDataSetChanged()
+    fun setData(newBookList: List<Book>) {
+        val diffCallback = BookDiffCallback(bookList, newBookList)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        bookList = newBookList
+        diffResult.dispatchUpdatesTo(this)
     }
 }

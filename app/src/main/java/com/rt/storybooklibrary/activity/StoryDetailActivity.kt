@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import com.rt.storybooklibrary.R
 import com.rt.storybooklibrary.activity.update.UpdateStoryActivity
@@ -80,8 +81,20 @@ class StoryDetailActivity : AppCompatActivity() {
                 binding.tvTitle.text = book.title
                 binding.tvSummary.text = book.summary
                 binding.tvCategory.text = book.category
-                binding.tvAuthor.text = book.author
-                binding.tvTags.text = book.tags
+                binding.tvAuthor.text = book.author // Ensure author is displayed in the correct TextView
+
+                // Add chips dynamically to the ChipGroup for tags
+                binding.chipGroupTags.removeAllViews() // Clear previous chips
+                val tags = book.tags?.split(",")
+                if (tags != null) {
+                    for (tag in tags) {
+                        val chip = Chip(this)
+                        chip.text = tag.trim()
+                        chip.isClickable = false
+                        chip.isCheckable = false
+                        binding.chipGroupTags.addView(chip)
+                    }
+                }
                 updateFavoriteIcon(book.favorite) // Update the icon based on the current favorite status
             } else {
                 // Handle the case where the book is not found
@@ -89,7 +102,7 @@ class StoryDetailActivity : AppCompatActivity() {
                 binding.tvSummary.text = ""
                 binding.tvCategory.text = ""
                 binding.tvAuthor.text = ""
-                binding.tvTags.text = ""
+                binding.chipGroupTags.removeAllViews()
             }
         }
     }
@@ -102,9 +115,10 @@ class StoryDetailActivity : AppCompatActivity() {
             putExtra("updateSummary", binding.tvSummary.text.toString())
             putExtra("updateCategory", binding.tvCategory.text.toString())
             putExtra("updateAuthor", binding.tvAuthor.text.toString())
-            putExtra("updateTags", binding.tvTags.text.toString())
+            putExtra("updateTags", currentBook?.tags)
         }
         startActivity(intent)
+//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
 //   Log.d("StoryDetailActivity", "id: $id, title: ${tvTitle.text}, summary: ${tvSummary.text}," + " category: ${tvCategory.text}, author: ${tvAuthor.text}, tags: ${tvTags.text}")
